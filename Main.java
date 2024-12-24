@@ -19,31 +19,18 @@
 //     }
 
 // }
-
-import LabFive.Alphabets;
-import LabFour.OsamaException;
-import LabFour.Test;
-
-import java.util.List;
-import java.util.ArrayList;
-
-import LabFour.Call;
-import LabFour.Rectangle;
-import LabFour.Shape;
-import LabFour.Circle;
-import LabFour.ShapeTest;
 import java.util.function.*;
+import LabThree.*;
+import LabFour.*;
+import LabFive.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        boolean[] bools = new boolean[4];
-        bools[0] = Alphabets.containsOnlyAlphabets("text");
-        bools[1] = Alphabets.containsOnlyAlphabets("some spaces");
-        bools[2] = Alphabets.containsOnlyAlphabets("0sama");
-        bools[3] = Alphabets.containsOnlyAlphabets("t%st");
-        for (int i = 0; i < 4; i++)
-            System.out.println(bools[i]);
+        BiPredicate<String, String> bi = (x, y) -> x.length() >= y.length();
+        // for me, the better String is the longer one.
+        String str = BetterFuture.betterString("Osama", "Ismail", bi);
+        System.out.println(str); // Ismail
     }
 
 }
