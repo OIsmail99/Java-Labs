@@ -68,13 +68,13 @@ public class City {
 		return true;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "City [id=" + id + ", name=" + name + ", population="
-//				+ population + ", countryCode=" + countryCode + "]";
-//	};
+	// @Override
+	// public String toString() {
+	// return "City [id=" + id + ", name=" + name + ", population="
+	// + population + ", countryCode=" + countryCode + "]";
+	// };
 	@Override
 	public String toString() {
-		return  name + ", "+ population + ", " + countryCode;
+		return name + ", " + population + ", " + countryCode;
 	};
 }
