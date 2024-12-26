@@ -2,6 +2,7 @@ abstract public class LibraryItem{
         private int ID;
         private String title;
         private int price;
+        boolean isBorrowed = false;
 
         public LibraryItem(int ID, String title, int price){
                 this.ID = ID;
@@ -27,5 +28,6 @@ abstract public class LibraryItem{
         public void setPrice(int price){
                 this.price = price;
         }
+
         abstract public void getItemsDetails();
 }
