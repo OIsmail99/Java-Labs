@@ -8,6 +8,7 @@ class Dictionary {
         char letter = word.charAt(0);
         TreeMap<String, String> wordAndDefinition = dictionary.get(letter);
         wordAndDefinition.put(word, definition);
+        // dictionary.put(letter, wordAndDefinition);
     }
 
     public static void print() {
