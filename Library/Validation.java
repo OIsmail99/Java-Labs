@@ -1,9 +1,7 @@
-import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Validation { // this class is used to validate the input of the user
-    
-    
+
     public static boolean isValidID(int ID) {
         if (ID < 0) {
             return false;
@@ -58,4 +56,9 @@ public class Validation { // this class is used to validate the input of the use
         return true;
     }
 
+    public static void isValidEmail(String email) {
+        if (!Pattern.matches("^(.+)@(.+)$", email)) {
+            throw new IllegalArgumentException("Invalid email");
+        }
+    }
 }

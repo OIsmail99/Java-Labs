@@ -1,31 +1,45 @@
-abstract public class LibraryItem{
+abstract public class LibraryItem {
         private int ID;
         private String title;
         private int price;
-        boolean isBorrowed = false;
+        private boolean borrowed;
 
-        public LibraryItem(int ID, String title, int price){
+        public LibraryItem(int ID, String title, int price) {
                 this.ID = ID;
                 this.title = title;
                 this.price = price;
+                this.borrowed = false;
         }
 
-        public int getID(){
+        public boolean isBorrowed() {
+                return borrowed;
+        }
+
+        public void setBorrowed(boolean borrowed) {
+                this.borrowed = borrowed;
+        }
+
+        public int getID() {
                 return ID;
         }
-        public String getTitle(){
+
+        public String getTitle() {
                 return title;
         }
-        public int getPrice(){
+
+        public int getPrice() {
                 return price;
         }
-        public void setID(int ID){
+
+        public void setID(int ID) {
                 this.ID = ID;
         }
-        public void setTitle(String title){
+
+        public void setTitle(String title) {
                 this.title = title;
         }
-        public void setPrice(int price){
+
+        public void setPrice(int price) {
                 this.price = price;
         }
 

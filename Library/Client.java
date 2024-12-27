@@ -14,6 +14,7 @@ public class Client {
         }
         throw new ClientNotFoundException("Client with ID " + id + " not found");
     }
+
     public Client(int id, String name, String email) {
         this.id = id;
         this.name = name;
@@ -45,13 +46,27 @@ public class Client {
     }
 
     public void getClientDetails() {
-        System.out.println("ID: " + getID() + "\nName: " + getName() + "\nEmail: " + getEmail());
+        System.out.println("ID of the client: " + getID() + "\nName of the client: " + getName()
+                + "\nEmail of the client: " + getEmail());
     }
 
     public void borrowItem(LibraryItem item) {
-        if(item.isBorrowed){
+        if (item.isBorrowed()) {
             System.out.println("Item is already borrowed");
             return;
         }
+        borrowedItems.add(item);
+        item.setBorrowed(true);
     }
+
+    public LibraryItem returnItem(LibraryItem inputItem) throws ItemNotFoundException {
+        for (LibraryItem item : borrowedItems) {
+            if (item.getID() == inputItem.getID()) {
+                borrowedItems.remove(item);
+                return item;
+            }
+        }
+        throw new ItemNotFoundException("item not found");
+    }
+
 }
