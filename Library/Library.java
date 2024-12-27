@@ -4,7 +4,6 @@ public class Library {
     static List<LibraryItem> items = new ArrayList<LibraryItem>();
     static List<Client> clients = new ArrayList<Client>();
 
-
     public static void addItem(LibraryItem item) {
         items.add(item);
     }
@@ -27,6 +26,7 @@ public class Library {
         System.out.println("Items in the library are:");
         for (LibraryItem item : items) {
             item.getItemsDetails();
+            System.out.println("****************");
         }
     }
 
@@ -43,9 +43,11 @@ public class Library {
             throw new ItemNotFoundException("Item with ID " + ID + " not found");
         }
     }
+
     public static void addClient(Client client) {
         clients.add(client);
     }
+
     public static void removeClient(int ID) throws ClientNotFoundException {
         boolean found = false;
         for (Client client : clients) {

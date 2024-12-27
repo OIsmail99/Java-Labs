@@ -21,6 +21,6 @@ public class Book extends LibraryItem {
 
     public void getItemsDetails() {
         System.out.println("ID: " + getID() + "\nTitle: " + getTitle() + "\nAuthor: " + getAuthor() + "\nPrice: "
-                + getPrice() + "\nauthor: " + author);
+                + getPrice());
     }
 }

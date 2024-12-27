@@ -13,8 +13,7 @@ public class DateTimeApp extends JFrame implements Runnable {
     public DateTimeApp() {
         this.setTitle("Moving Text Application");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(600, 400);
-        this.setLocationRelativeTo(null);
+        this.setSize(600, 400); // size of the initial window
         this.setVisible(true);
         th = new Thread(this);
         th.start();

@@ -1,6 +1,9 @@
+import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Validation { // this class is used to validate the input of the user
+    
+    
     public static boolean isValidID(int ID) {
         if (ID < 0) {
             return false;
