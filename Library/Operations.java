@@ -11,7 +11,7 @@ public class Operations {
 
         while (validInput == false) {
             int intInput = Menu.getValidInt();
-            if (Validation.isExistingID(intInput) == true || Validation.isValidID(intInput) == false) {
+            if (Validation.isExistingItemID(intInput) == true || Validation.isValidID(intInput) == false) {
                 System.out.println("invalid input");
             } else {
                 ID = intInput;
@@ -74,7 +74,7 @@ public class Operations {
 
         while (validInput == false) {
             int intInput = Menu.getValidInt();
-            if (Validation.isExistingID(intInput) == true || Validation.isValidID(intInput) == false) {
+            if (Validation.isExistingItemID(intInput) == true || Validation.isValidID(intInput) == false) {
                 System.out.println("invalid input");
             } else {
                 ID = intInput;
@@ -150,7 +150,7 @@ public class Operations {
 
         while (validInput == false) {
             int intInput = Menu.getValidInt();
-            if (Validation.isExistingID(intInput) == true || Validation.isValidID(intInput) == false) {
+            if (Validation.isExistingItemID(intInput) == true || Validation.isValidID(intInput) == false) {
                 System.out.println("invalid input");
             } else {
                 ID = intInput;
@@ -297,5 +297,47 @@ public class Operations {
                 System.out.println(e.getMessage());
             }
         }
+    }
+
+    public static void addClient() {
+        int ID = 0;
+        String name = "";
+        String email = "";
+        boolean validInput = false;
+        System.out.println("Enter the ID of the client");
+        while (validInput == false) {
+            int inputID = Menu.getValidInt();
+            if (Validation.isValidID(inputID) == false || Validation.isUniqueClientID(inputID) == false) {
+                System.out.println("invalid input, try again");
+            } else {
+                ID = inputID;
+                validInput = true;
+            }
+        }
+        System.out.println("Enter the name of the client");
+        validInput = false;
+        while (validInput == false) {
+            String inputName = Menu.getValidString();
+            if (Validation.isValidAuthor(inputName) == false) {
+                System.out.println("invalid input, try again");
+            } else {
+                name = inputName;
+                validInput = true;
+            }
+        }
+
+        System.out.println("Enter Email of the client");
+        validInput = false;
+        while (validInput == false) {
+            String inputEmail = Menu.getValidString();
+            if (Validation.isValidEmail(inputEmail) == false || Validation.isUniqueEmail(email) == false) {
+                System.out.println("invalid input, try again");
+            } else {
+                email = inputEmail;
+                validInput = true;
+            }
+        }
+        Client newClient = new Client(ID, name, email);
+        Library.clients.add(newClient);
     }
 }

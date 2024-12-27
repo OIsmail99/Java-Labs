@@ -2,13 +2,12 @@ abstract public class LibraryItem {
         private int ID;
         private String title;
         private int price;
-        private boolean borrowed;
+        protected boolean borrowed = false;
 
         public LibraryItem(int ID, String title, int price) {
                 this.ID = ID;
                 this.title = title;
                 this.price = price;
-                this.borrowed = false;
         }
 
         public boolean isBorrowed() {

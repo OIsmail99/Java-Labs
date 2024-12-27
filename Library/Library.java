@@ -22,6 +22,10 @@ public class Library {
         }
     }
 
+    public static void addCleint(Client client) {
+        clients.add(client);
+    }
+
     public static void displayItems() {
         if (items.size() == 0) {
             System.out.println("Library is empty");
@@ -32,6 +36,17 @@ public class Library {
             item.getItemsDetails();
             System.out.println("****************");
         }
+    }
+
+    public static void displayCleints() {
+        if (clients.size() == 0) {
+            System.out.println("no clients yet!");
+            return;
+        }
+        for (Client client : clients) {
+            client.getClientDetails();
+        }
+        System.out.println("****************");
     }
 
     // fix this method

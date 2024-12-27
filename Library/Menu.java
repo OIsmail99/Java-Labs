@@ -3,14 +3,18 @@ import java.util.Scanner;
 public class Menu { // this class is used to display the menu of the library management system
     public static Scanner scanner = new Scanner(System.in);
 
-
     public static void displayMainMenu() {
         System.out.println("Enter your choice");
         System.out.println("1. Add Item");
         System.out.println("2. Remove Item");
         System.out.println("3. Display Items");
         System.out.println("4. Update Item");
-        System.out.println("5. Exit");
+        System.out.println("5. Add Client");
+        System.out.println("6. Display Clients");
+        System.out.println("7. Borrow Item");
+        System.out.println("8. Return Item");
+        System.out.println("9. Exit");
+
     }
 
     public static void displayAddItemMenu() {
@@ -20,15 +24,14 @@ public class Menu { // this class is used to display the menu of the library man
         System.out.println("4. Back to the Main Menu");
     }
 
-    public static String getValidString(){
+    public static String getValidString() {
         boolean validInput = false;
         String input = "";
-        while(!validInput){
-            try{
+        while (!validInput) {
+            try {
                 input = scanner.nextLine();
                 validInput = true;
-            }
-            catch(Exception e){
+            } catch (Exception e) {
                 System.out.println("invalid input, try again");
             }
         }

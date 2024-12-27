@@ -9,7 +9,8 @@ public class Magazine extends LibraryItem {
 
     public void getItemsDetails() {
         System.out.println(
-                "ID: " + getID() + "\nTitle: " + getTitle() + "\nAuthor: " + getEditor() + "\nPrice: " + getPrice());
+                "ID of the magazine: " + getID() + "\nTitle of the magazine: " + getTitle()
+                        + "\nAuthor of the magazine: " + getEditor() + "\nPrice of the magazine: " + getPrice());
     }
 
     public void setEditor(String editor) {

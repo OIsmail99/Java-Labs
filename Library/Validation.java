@@ -10,7 +10,7 @@ public class Validation { // this class is used to validate the input of the use
 
     }
 
-    public static boolean isExistingID(int ID) {
+    public static boolean isExistingItemID(int ID) {
         for (LibraryItem item : Library.items) {
             if (item.getID() == ID) {
                 return true;
@@ -19,7 +19,7 @@ public class Validation { // this class is used to validate the input of the use
         return false;
     }
 
-    public static boolean isUniqueID(int ID) {
+    public static boolean isUniqueItemID(int ID) {
         for (LibraryItem item : Library.items) {
             if (item.getID() == ID) {
                 return false;
@@ -56,9 +56,28 @@ public class Validation { // this class is used to validate the input of the use
         return true;
     }
 
-    public static void isValidEmail(String email) {
+    public static boolean isValidEmail(String email) {
         if (!Pattern.matches("^(.+)@(.+)$", email)) {
-            throw new IllegalArgumentException("Invalid email");
+            return false;
         }
+        return true;
+    }
+
+    public static boolean isUniqueEmail(String email) {
+        for (Client client : Library.clients) {
+            if (client.getEmail().equals(email)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean isUniqueClientID(int ID) {
+        for (Client client : Library.clients) {
+            if (client.getID() == ID) {
+                return false;
+            }
+        }
+        return true;
     }
 }

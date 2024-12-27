@@ -5,7 +5,12 @@ public class Main {
     static final int removeItem = 2;
     static final int displayItems = 3;
     static final int updateItem = 4;
-    static final int exit = 5;
+    static final int addClient = 5;
+    static final int displayClients = 6;
+    static final int borrowItem = 7;
+    static final int returnItem = 8;
+    static final int exit = 9;
+
     static final int addNonFiction = 1;
     static final int addNovel = 2;
     static final int addMagazine = 3;
@@ -14,7 +19,7 @@ public class Main {
     static boolean addMenuFlag = true;
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        // Scanner scanner = new Scanner(System.in);
 
         while (mainMenuFlag) {
 
@@ -60,6 +65,12 @@ public class Main {
                     break;
                 case updateItem:
                     Operations.updateItem();
+                    break;
+                case addClient: // email uniqueness function is not working yet.
+                    Operations.addClient();
+                    break;
+                case displayClients:
+                    Library.displayCleints();
                     break;
                 case exit:
                     mainMenuFlag = false;
