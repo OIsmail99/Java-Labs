@@ -4,7 +4,8 @@ public class Main {
     static final int addItem = 1;
     static final int removeItem = 2;
     static final int displayItems = 3;
-    static final int exit = 4;
+    static final int updateItem = 4;
+    static final int exit = 5;
     static final int addNonFiction = 1;
     static final int addNovel = 2;
     static final int addMagazine = 3;
@@ -52,9 +53,12 @@ public class Main {
                     }
                     break; // break from case 1
                 case removeItem:
+                    Operations.removeItem();
                     break;
                 case displayItems:
                     Library.displayItems();
+                    break;
+                case updateItem:
                     break;
                 case exit:
                     mainMenuFlag = false;

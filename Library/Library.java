@@ -23,6 +23,10 @@ public class Library {
     }
 
     public static void displayItems() {
+        if (items.size() == 0) {
+            System.out.println("Library is empty");
+            return;
+        }
         System.out.println("Items in the library are:");
         for (LibraryItem item : items) {
             item.getItemsDetails();

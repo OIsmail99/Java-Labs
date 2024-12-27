@@ -199,4 +199,23 @@ public class Operations {
         Magazine newMagazine = new Magazine(ID, title, price, editor);
         Library.items.add(newMagazine);
     }
+
+    public static void removeItem() {
+        if(Library.items.size() == 0){
+            System.out.println("Library is empty");
+            return;
+        }
+        boolean validID = false;
+
+        System.out.println("Enter the ID of the item you want to remove");
+        while (validID == false) {
+            int itemID = Menu.getValidInt();
+            try {
+                Library.removeItem(itemID);
+                validID = true;
+            } catch (ItemNotFoundException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
 }
