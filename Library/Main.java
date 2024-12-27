@@ -59,6 +59,7 @@ public class Main {
                     Library.displayItems();
                     break;
                 case updateItem:
+                    Operations.updateItem();
                     break;
                 case exit:
                     mainMenuFlag = false;

@@ -201,7 +201,7 @@ public class Operations {
     }
 
     public static void removeItem() {
-        if(Library.items.size() == 0){
+        if (Library.items.size() == 0) {
             System.out.println("Library is empty");
             return;
         }
@@ -213,6 +213,86 @@ public class Operations {
             try {
                 Library.removeItem(itemID);
                 validID = true;
+            } catch (ItemNotFoundException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    public static void updateItem() {
+        boolean updatedItem = false;
+        while (updatedItem == false) {
+
+            System.out.println("Enter the ID of the item you want to update");
+            int inputID = Menu.getValidInt();
+            // validate all the attributes before setting them
+            try {
+                LibraryItem item = Library.searchItem(inputID);
+                boolean isValidTitle = false;
+                while (isValidTitle == false) {
+                    System.out.println("Enter the new title of the item");
+                    String newTitle = Menu.getValidString();
+                    if (Validation.isValidTitle(newTitle)) {
+                        item.setTitle(newTitle);
+                        isValidTitle = true;
+                    } else {
+                        System.out.println("Invalid title");
+                    }
+                }
+
+                boolean isValidPrice = false;
+                while (isValidPrice == false) {
+                    System.out.println("Enter the new price of the item");
+                    int newPrice = Menu.getValidInt();
+                    if (Validation.isValidPrice(newPrice)) {
+                        item.setPrice(newPrice);
+                        isValidPrice = true;
+                    } else {
+                        System.out.println("Invalid price");
+                    }
+                }
+
+                if (item instanceof Book) {
+                    boolean isValidAuthor = false;
+                    while (isValidAuthor == false) {
+                        System.out.println("Enter the new author of the book");
+                        String newAuthor = Menu.getValidString();
+                        if (Validation.isValidAuthor(newAuthor)) {
+                            ((Book) item).setAuthor(newAuthor);
+                            isValidAuthor = true;
+                        } else {
+                            System.out.println("Invalid author");
+                        }
+                    }
+                }
+
+                else if (item instanceof Novel) {
+                    boolean isValidGenre = false;
+                    while (isValidGenre == false) {
+                        System.out.println("Enter the new genre of the novel");
+                        String newGenre = Menu.getValidString();
+                        if (Validation.isValidGenre(newGenre)) {
+                            ((Novel) item).setGenre(newGenre);
+                            isValidGenre = true;
+                        } else {
+                            System.out.println("Invalid genre");
+                        }
+                    }
+
+                } else if (item instanceof Magazine) {
+                    boolean isValidEditor = false;
+                    while (isValidEditor == false) {
+                        System.out.println("Enter the new editor of the magazine");
+                        String newEditor = Menu.getValidString();
+                        if (Validation.isValidAuthor(newEditor)) {
+                            ((Magazine) item).setEditor(newEditor);
+                            isValidEditor = true;
+                        } else {
+                            System.out.println("Invalid editor");
+                        }
+                    }
+                }
+                updatedItem = true;
             } catch (ItemNotFoundException e) {
                 System.out.println(e.getMessage());
             }

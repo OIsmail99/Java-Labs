@@ -11,7 +11,7 @@ public class Book extends LibraryItem {
         return author;
     }
 
-    public void setauthor(String author) {
+    public void setAuthor(String author) {
         if (Validation.isValidAuthor(author)) {
             this.author = author;
             return;

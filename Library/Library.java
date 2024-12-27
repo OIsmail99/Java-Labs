@@ -34,18 +34,14 @@ public class Library {
         }
     }
 
-    public static void searchItem(int ID) throws ItemNotFoundException {
-        boolean found = false;
+    // fix this method
+    public static LibraryItem searchItem(int ID) throws ItemNotFoundException {
         for (LibraryItem item : items) {
             if (item.getID() == ID) {
-                item.getItemsDetails();
-                found = true;
-                break;
+                return item;
             }
         }
-        if (!found) {
-            throw new ItemNotFoundException("Item with ID " + ID + " not found");
-        }
+        throw new ItemNotFoundException("Item with ID " + ID + " not found");
     }
 
     public static void addClient(Client client) {
