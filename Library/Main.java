@@ -19,7 +19,26 @@ public class Main {
     static boolean addMenuFlag = true;
 
     public static void main(String[] args) {
-        // Scanner scanner = new Scanner(System.in);
+
+        // Client osama = new Client(1, "osama", "osama@gmail.com");
+        // Client ahmad = new Client(2, "ahmad", "ahmad@gmail.com");
+        // LibraryItem book = new Book(1, "my book", 500, "noam chomsky");
+        // osama.borrowItem(book);
+        // // osama.getClientDetails();
+        // try {
+        // osama.returnItem(book);
+        // } catch (ItemNotFoundException e) {
+        // // TODO Auto-generated catch block
+        // e.printStackTrace();
+        // }
+        // LibraryItem book2 = new Book(1, "my other book", 500, "noam chomsky");
+        // ahmad.borrowItem(book);
+        // ahmad.borrowItem(book2);
+        // // osama.getClientDetails();
+        // // ahmad.getClientDetails();
+        // Library.displayItems();
+
+        Scanner scanner = new Scanner(System.in);
 
         while (mainMenuFlag) {
 
@@ -71,6 +90,12 @@ public class Main {
                     break;
                 case displayClients:
                     Library.displayCleints();
+                    break;
+                case borrowItem:
+                    Operations.borrowItem();
+                    break;
+                case returnItem:
+                    Operations.returnItem();
                     break;
                 case exit:
                     mainMenuFlag = false;

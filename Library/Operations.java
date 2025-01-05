@@ -330,7 +330,7 @@ public class Operations {
         validInput = false;
         while (validInput == false) {
             String inputEmail = Menu.getValidString();
-            if (Validation.isValidEmail(inputEmail) == false || Validation.isUniqueEmail(email) == false) {
+            if (Validation.isValidEmail(inputEmail) == false || Validation.isUniqueEmail(inputEmail) == false) {
                 System.out.println("invalid input, try again");
             } else {
                 email = inputEmail;
@@ -339,5 +339,76 @@ public class Operations {
         }
         Client newClient = new Client(ID, name, email);
         Library.clients.add(newClient);
+    }
+
+    public static void borrowItem() {
+        Client client = null;
+        LibraryItem item = null;
+        boolean validID = false;
+        while (!validID) {
+            System.out.println("Enter the Client ID: ");
+            int inputID = Menu.getValidInt();
+            try {
+                client = Library.searchClient(inputID);
+                validID = true;
+
+            } catch (ClientNotFoundException e) {
+                System.out.println("Client not found, try again");
+            }
+        }
+
+        validID = false;
+        while (!validID) {
+            System.out.println("Enter the ID of the item you want to borrow: ");
+            int inputID = Menu.getValidInt();
+            try {
+                item = Library.searchItem(inputID);
+                if (item.isBorrowed() == false) {
+                    validID = true;
+                } else {
+                    System.out.println("Item is already borrowed!");
+                }
+
+            } catch (ItemNotFoundException e) {
+                System.out.println("Item not found, try again");
+            }
+        }
+        client.borrowedItems.add(item);
+    }
+
+    public static void returnItem() {
+        Client client = null;
+        LibraryItem item = null;
+        boolean validID = false;
+        while (!validID) {
+            System.out.println("Enter the Client ID: ");
+            int inputID = Menu.getValidInt();
+            try {
+                client = Library.searchClient(inputID);
+                validID = true;
+
+            } catch (ClientNotFoundException e) {
+                System.out.println("Client not found, try again");
+            }
+        }
+
+        validID = false;
+        while (!validID) {
+            System.out.println("Enter the ID of the item you want to return: ");
+            int inputID = Menu.getValidInt();
+            try {
+                item = Library.searchItem(inputID);
+                if (client.borrowedItems.contains(item)) {
+                    validID = true;
+                } else {
+                    System.out.println("Item is not borrowed!");
+                }
+
+            } catch (ItemNotFoundException e) {
+                System.out.println("Item not found, try again");
+            }
+        }
+        client.borrowedItems.remove(item);
+
     }
 }

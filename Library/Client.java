@@ -33,6 +33,24 @@ public class Client {
         return email;
     }
 
+    public List<LibraryItem> getBorrowedItems() {
+        List<LibraryItem> borrowedItems = new ArrayList<>();
+        for (LibraryItem item : this.borrowedItems) {
+            borrowedItems.add(item);
+        }
+        return borrowedItems;
+    }
+
+    public void getBorrowedItemsDetails() {
+        for (LibraryItem item : this.borrowedItems) {
+            System.out.println(item.getTitle());
+        }
+    }
+
+    public void setBorrowedItems(LibraryItem item) {
+        this.borrowedItems.add(item);
+    }
+
     public void setID(int id) {
         this.id = id;
     }
@@ -45,24 +63,29 @@ public class Client {
         this.email = email;
     }
 
-    public void getClientDetails() {
+    public void printClientDetails() {
         System.out.println("ID of the client: " + getID() + "\nName of the client: " + getName()
                 + "\nEmail of the client: " + getEmail());
+        System.out.print("borrowed items: ");
+        this.getBorrowedItemsDetails();
+        System.out.println("***********************");
     }
 
-    public void borrowItem(LibraryItem item) {
+    public boolean borrowItem(LibraryItem item) {
         if (item.isBorrowed()) {
             System.out.println("Item is already borrowed");
-            return;
+            return false;
         }
         borrowedItems.add(item);
         item.setBorrowed(true);
+        return true;
     }
 
     public LibraryItem returnItem(LibraryItem inputItem) throws ItemNotFoundException {
         for (LibraryItem item : borrowedItems) {
             if (item.getID() == inputItem.getID()) {
                 borrowedItems.remove(item);
+                item.setBorrowed(false);
                 return item;
             }
         }

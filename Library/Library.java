@@ -3,6 +3,7 @@ import java.util.*;
 public class Library {
     static List<LibraryItem> items = new ArrayList<LibraryItem>();
     static List<Client> clients = new ArrayList<Client>();
+    static HashMap<Client, List<LibraryItem>> borrowedItemsForEach = new HashMap<>();
 
     public static void addItem(LibraryItem item) {
         items.add(item);
@@ -24,6 +25,7 @@ public class Library {
 
     public static void addCleint(Client client) {
         clients.add(client);
+        borrowedItemsForEach.put(client, client.borrowedItems);
     }
 
     public static void displayItems() {
@@ -44,7 +46,7 @@ public class Library {
             return;
         }
         for (Client client : clients) {
-            client.getClientDetails();
+            client.printClientDetails();
         }
         System.out.println("****************");
     }
@@ -59,22 +61,24 @@ public class Library {
         throw new ItemNotFoundException("Item with ID " + ID + " not found");
     }
 
-    public static void addClient(Client client) {
-        clients.add(client);
+    public static Client searchClient(int ID) throws ClientNotFoundException {
+        for (Client client : clients) {
+            if (client.getID() == ID) {
+                return client;
+            }
+        }
+        throw new ClientNotFoundException("client with ID: " + ID + "not found");
     }
 
     public static void removeClient(int ID) throws ClientNotFoundException {
-        boolean found = false;
         for (Client client : clients) {
             if (client.getID() == ID) {
                 clients.remove(client);
-                found = true;
+                borrowedItemsForEach.remove(client);
                 break;
             }
         }
-        if (!found) {
-            throw new ClientNotFoundException("Client with ID " + ID + " not found");
-        }
+        throw new ClientNotFoundException("Client with ID " + ID + " not found");
     }
 
 }

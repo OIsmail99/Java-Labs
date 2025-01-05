@@ -8,6 +8,7 @@ abstract public class LibraryItem {
                 this.ID = ID;
                 this.title = title;
                 this.price = price;
+                Library.addItem(this);
         }
 
         public boolean isBorrowed() {
