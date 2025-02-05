@@ -3,5 +3,4 @@ These are my Lab solutions to the "Java Core Programming" ITI Course. The Course
 2) Java Streams API
 3) Generic Programming
 4) Exception Handling
-5) Concurrency & Multithreading
-   
+5) Concurrency & Multithreading.
